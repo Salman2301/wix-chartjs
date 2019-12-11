@@ -2,6 +2,8 @@
 
 This chart use windows.onmessage and windows.postmessage to communicate with the wix site.
 
+Embed URL : https://salman2301.github.io/wix-chartjs/
+
 
 when the app is ready, it will fire an message as a object to parent windows
 

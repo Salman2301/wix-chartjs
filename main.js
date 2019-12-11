@@ -64,29 +64,30 @@ window.onmessage = e => {
     chartSetting = e.data.chartSetting;
   }
 
+	
+
   if (e.data.type) {
+    chartSetting.type = e.data.type;
+
     type = e.data.type;
   }
   if (e.data.labels) {
-    labels = e.data.labels;
+    chartSetting.data.labels = e.data.labels;
   }
   if (e.data.label) {
-    label = e.data.label;
+    chartSetting.data.datasets[0].label = e.data.label;
   }
   if (e.data.data) {
-    console.log("true")
-    data = e.data.data;
-  } else {
-    console.log("false")
+    chartSetting.data.datasets[0].data = e.data.data;
   }
   if (e.data.backgroundColor) {
-    backgroundColor = e.data.backgroundColor;
+    chartSetting.data.datasets[0].backgroundColor = e.data.backgroundColor;
   }
   if (e.data.borderColor) {
-    borderColor = e.data.borderColor;
+    chartSetting.data.datasets[0].borderColor = e.data.borderColor;
   }
   if (e.data.borderWidth) {
-    borderWidth = e.data.borderWidth;
+    chartSetting.data.datasets[0].borderWidth =  e.data.borderWidth;
   }
   if (e.data.options) {
     options = e.data.options;
@@ -104,22 +105,6 @@ function init() {
 function refresh() {
   console.log("refreshing..." , chartSetting);
   myChart.destroy();
-
-  chartSetting = {
-    type: type,
-    data: {
-      labels: labels,
-      datasets: [{
-        label: label,
-        data: data,
-        backgroundColor: backgroundColor,
-        borderColor: borderColor,
-        borderWidth: borderWidth
-      }]
-    },
-    options: options
-  }
-
   myChart = new Chart(ctx, chartSetting);
 
 }
